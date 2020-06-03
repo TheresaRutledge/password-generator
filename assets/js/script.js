@@ -1,8 +1,4 @@
-// Assignment code here
-
-//generates password based on user prompt inputs
-const generatePassword = () => {
-  //function to randomly select a char types. Parameter is array of types available
+ //function to randomly select a char types. Parameter is array of types available
   //function to randomly select character based on charater type
   //prompt password length btwn 8-128 characters
   //prompt what char types should be included (min one selected): lowercase, uppercase,numeric,special chars
@@ -12,7 +8,6 @@ const generatePassword = () => {
   //once type is generated, randomly assign a character within type to password array
   //once password array has reach length goal convert to string
   //return password string
-
 
   //Functions:
   
@@ -26,6 +21,8 @@ const generatePassword = () => {
 
 //random special character generator
 
+//prompt user for character types selection. Must choose at least one
+
 
 //function to prompt user for password length between 8-128
 const getPasswordLength = () => {
@@ -38,25 +35,20 @@ const getPasswordLength = () => {
     alert('Password must be between 8 and 128 characters.');
     getPasswordLength();
   }
+  return passwordLength;
 }
 
-//prompt character types selection
+
 
 
 //generates password based on user prompt inputs
 const generatePassword = () => {
-  //get password length
-  getPasswordLength();
-  //if char type selected - what char types should be included (min one selected): lowercase, uppercase,numeric,special chars
-  //if lowercase selected
-  //if uppercase selected
-  // if numeric selected
-  // if special chars selected
-
-
+  //password length
+let length = getPasswordLength();
 }
 
 
+/*DO NOT DELETE BELOW HERE*/
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
