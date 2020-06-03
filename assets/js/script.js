@@ -26,14 +26,6 @@ const generatePassword = () => {
 
 //random special character generator
 
-//prompt password length function
-
-//prompt character types selection
-
-
-
-
-
 
 //function to prompt user for password length between 8-128
 const getPasswordLength = () => {
@@ -47,6 +39,8 @@ const getPasswordLength = () => {
     getPasswordLength();
   }
 }
+
+//prompt character types selection
 
 
 //generates password based on user prompt inputs
