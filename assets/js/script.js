@@ -1,31 +1,19 @@
-//function to randomly select a char types. Parameter is array of types available
-//function to randomly select character based on charater type
-//prompt password length btwn 8-128 characters
-//prompt what char types should be included (min one selected): lowercase, uppercase,numeric,special chars
-//take chosen char types into an array
-//create password array and fill first indexes with character types selected to ensure each has at least one representation
-//pass types array to random type generator for remainder of password charaters 
-//once type is generated, randomly assign a character within type to password array
-//once password array has reach length goal convert to string
-//return password string
-
-//Functions:
-
+//Generate a random password based on user inputs for length and character criteria:cases, numeric, special characters
 
 //random letter generator
 var getLetter = () => {
   let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   let index = Math.floor(Math.random() * 26);
   return alphabet[index];
-
 }
-//random lowercase generator
+
+//lowercase generator
 var getLowerCase = () => {
   letter = getLetter();
   return letter.toLowerCase();
 }
 
-//random uppercase generator
+//uppercase generator
 var getUpperCase = () => {
   letter = getLetter();
   return letter.toUpperCase();
@@ -41,7 +29,7 @@ var getSpecialCharacter = () => {
   let specialCharacters = '~!@#$%&*'.split('');
   let index = Math.floor(Math.random() * specialCharacters.length);
   return specialCharacters[index];
-};
+}
 
 //randomly chooses a character type from array of types chosen by user
 const randomCharacterTypes = (characterArr) => {
@@ -50,9 +38,6 @@ const randomCharacterTypes = (characterArr) => {
   console.log(`random type: ${characterArr[index]}`);
   return characterArr[index];
 }
-
-
-
 
 //prompt user for character types selection. Must choose at least one. Returns array of character types chosen
 const getCharacterTypes = () => {
@@ -86,24 +71,23 @@ const getCharacterTypes = () => {
   return characterTypesArr;
 }
 
-
 //function to prompt user for password length between 8-128
 const getPasswordLength = () => {
   while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
     var passwordLength = prompt('Choose password length between 8 and 128 characters.');
-    if(!passwordLength){
+    if (!passwordLength) {
       alert('Must enter valid length');
     }
-    if(passwordLength < 8 || passwordLength > 128){
+    if (passwordLength < 8 || passwordLength > 128) {
       alert('length must be between 8 and 128');
     }
   }
   passwordLength = parseInt(passwordLength);
   console.log(`Length: ${passwordLength}`);
   return passwordLength;
-
 }
 
+//returns an individual character based on the type passed in
 const getCharacter = (type) => {
   switch (type) {
     case 'lowercase':
@@ -123,7 +107,7 @@ const getCharacter = (type) => {
   }
 }
 
-//fill out rest of password 
+//creates array for password making sure at least one of each type is represented. returns array joined as a string
 const getPassword = (types, length) => {
   let password = [];
   for (i = 0; i < types.length; i++) {
@@ -134,21 +118,16 @@ const getPassword = (types, length) => {
     password.push(getCharacter(randomCharacterTypes(types)));
   }
   return password.join('');
-
 }
 
-
-//asks user for length, character type criterias and generates password ensuring each selected character type is used at least once
+//asks user for length and character type criterias then returns password string
 const generatePassword = () => {
   let length = getPasswordLength();
   let characterTypes = getCharacterTypes();
   let password = getPassword(characterTypes, length);
   return password;
-
 }
 
-
-/*DO NOT DELETE BELOW HERE*/
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -158,7 +137,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
