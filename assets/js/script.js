@@ -11,18 +11,42 @@
 
 //Functions:
 
-//random charater type generator
 
+//random letter generator
+var getLetter = () => {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let index = Math.floor(Math.random()*26);
+  return alphabet[index];
+
+}
 //random lowercase generator
+var getLowerCase = () => {
+  letter = getLetter();
+  return letter.toLowerCase();
+}
 
 //random uppercase generator
+var getUpperCase = () => {
+  letter = getLetter();
+  return letter.toUpperCase();
+}
 
 //random numeric generator
+var getNumeric = () => {
+  return Math.floor(Math.random()*10);
+}
 
 //random special character generator
+var getSpecialCharacter = () => {
+  let specialCharacters = '~!@#$%&*'.split('');
+  let index = Math.floor(Math.random()*specialCharacters.length);
+  return specialCharacters[index];
+};
+
+
+
 
 //prompt user for character types selection. Must choose at least one
-
 const getCharacterTypes = () => {
   alert('Select which character types to inlcude. Must select at least one');
   var lowercase = window.confirm('Include lowercase?');
@@ -31,7 +55,7 @@ const getCharacterTypes = () => {
   var specialCharacters = window.confirm('Include special characters?');
   if (
     !lowercase && !uppercase && !numeric && !specialCharacters
-  ){
+  ) {
     alert('Must select at least one character type.')
     getCharacterTypes();
   }
@@ -62,6 +86,7 @@ const generatePassword = () => {
   let length = getPasswordLength();
   //get character types
   let charTypes = getCharacterTypes();
+
 }
 
 
