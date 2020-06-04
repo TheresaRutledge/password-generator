@@ -79,7 +79,7 @@ const getCharacterTypes = () => {
     console.log('numeric criteria added');
   }
   if (specialCharacters){
-    characterTypesArr.push('specialCharacters');
+    characterTypesArr.push('specialCharacter');
     console.log('special characters criteria added');
   }
   return characterTypesArr;
@@ -102,15 +102,46 @@ const getPasswordLength = () => {
   return passwordLength;
 }
 
+const getCharacter = (type) => {
+    switch(type){
+      case 'lowercase':
+        return getLowerCase();
+        break;
+        case 'uppercase':
+          return getUpperCase();
+          break;
+          case 'numeric':
+            return getNumeric();
+            break;
+            case 'specialCharacter':
+              return getSpecialCharacter();
+              break;
+              default:
+                alert('Error - generate password loop');
+    }
+}
+
+//fill out rest of password 
+const getPassword = (types,length) => {
+  let password = [];
+  for (i=0; i<types.length;i++){
+    password.push(getCharacter(types[i]));
+  }
+  let remainingLength = length-password.length;
+  for (i=0; i<remainingLength;i++){
+    password.push(getCharacter(randomCharacterTypes(types)));
+  }
+  return password.join('');
+
+}
 
 
-
-//generates password based on user prompt inputs
+//asks user for length, character type criterias and generates password ensuring each selected character type is used at least once
 const generatePassword = () => {
-  //get password length
   let length = getPasswordLength();
-  //get character types
   let characterTypes = getCharacterTypes();
+  let password = getPassword(characterTypes,length);
+  return password;
 
 }
 
