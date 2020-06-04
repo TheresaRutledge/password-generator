@@ -12,3 +12,4 @@ Randomly generates a password that meets criteria selected by user
 ![]()
 
 ## Website
+https://theresarutledge.github.io/password-generator/
