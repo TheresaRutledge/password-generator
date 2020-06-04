@@ -54,16 +54,12 @@ const randomCharacterTypes = (characterArr) => {
 
 //prompt user for character types selection. Must choose at least one. Returns array of character types chosen
 const getCharacterTypes = () => {
+  while (!lowercase && !uppercase && !numeric && !specialCharacters){
   alert('Select which character types to include. Must select at least one');
   var lowercase = window.confirm('Include lowercase?');
   var uppercase = window.confirm('Include uppercase?');
   var numeric = window.confirm('Include numeric?');
   var specialCharacters = window.confirm('Include special characters?');
-  if (
-    !lowercase && !uppercase && !numeric && !specialCharacters
-  ) {
-    alert('Must select at least one character type.')
-    getCharacterTypes();
   }
   var characterTypesArr = [];
   if (lowercase) {
