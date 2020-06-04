@@ -45,7 +45,9 @@ var getSpecialCharacter = () => {
 
 //randomly chooses a character type from array of types chosen by user
 const randomCharacterTypes = (characterArr) => {
-  let index = Math.floor(Math.random(0 * characterArr.length));
+  debugger;
+  let index = Math.floor(Math.random() * characterArr.length);
+  console.log(`random type: ${characterArr[index]}`);
   return characterArr[index];
 }
 
@@ -54,12 +56,15 @@ const randomCharacterTypes = (characterArr) => {
 
 //prompt user for character types selection. Must choose at least one. Returns array of character types chosen
 const getCharacterTypes = () => {
-  while (!lowercase && !uppercase && !numeric && !specialCharacters){
   alert('Select which character types to include. Must select at least one');
-  var lowercase = window.confirm('Include lowercase?');
-  var uppercase = window.confirm('Include uppercase?');
-  var numeric = window.confirm('Include numeric?');
-  var specialCharacters = window.confirm('Include special characters?');
+  while (!lowercase && !uppercase && !numeric && !specialCharacters) {
+    var lowercase = window.confirm('Include lowercase?');
+    var uppercase = window.confirm('Include uppercase?');
+    var numeric = window.confirm('Include numeric?');
+    var specialCharacters = window.confirm('Include special characters?');
+    if (!lowercase && !uppercase && !numeric && !specialCharacters) {
+      alert('must select at least one');
+    }
   }
   var characterTypesArr = [];
   if (lowercase) {
@@ -84,9 +89,14 @@ const getCharacterTypes = () => {
 
 //function to prompt user for password length between 8-128
 const getPasswordLength = () => {
-  debugger;
   while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
     var passwordLength = prompt('Choose password length between 8 and 128 characters.');
+    if(!passwordLength){
+      alert('Must enter valid length');
+    }
+    if(passwordLength < 8 || passwordLength > 128){
+      alert('length must be between 8 and 128');
+    }
   }
   passwordLength = parseInt(passwordLength);
   console.log(`Length: ${passwordLength}`);
