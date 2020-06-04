@@ -1,7 +1,7 @@
 # Password Generator 
 
 ## Purpose
-Randomly generates a password that meets criteria selected by user
+Randomly generate a password that meets criteria selected by user. User input is: length and if they want to use lowercase, uppercase, numeric and/or special characters.
 
 ## Built with
 *HTML
