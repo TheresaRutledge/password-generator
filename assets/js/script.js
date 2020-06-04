@@ -15,7 +15,7 @@
 //random letter generator
 var getLetter = () => {
   let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  let index = Math.floor(Math.random()*26);
+  let index = Math.floor(Math.random() * 26);
   return alphabet[index];
 
 }
@@ -33,19 +33,19 @@ var getUpperCase = () => {
 
 //random numeric generator
 var getNumeric = () => {
-  return Math.floor(Math.random()*10);
+  return Math.floor(Math.random() * 10);
 }
 
 //random special character generator
 var getSpecialCharacter = () => {
   let specialCharacters = '~!@#$%&*'.split('');
-  let index = Math.floor(Math.random()*specialCharacters.length);
+  let index = Math.floor(Math.random() * specialCharacters.length);
   return specialCharacters[index];
 };
 
 //randomly chooses a character type from array of types chosen by user
 const randomCharacterTypes = (characterArr) => {
-  let index = Math.floor(Math.random(0*characterArr.length));
+  let index = Math.floor(Math.random(0 * characterArr.length));
   return characterArr[index];
 }
 
@@ -66,19 +66,19 @@ const getCharacterTypes = () => {
     getCharacterTypes();
   }
   var characterTypesArr = [];
-  if (lowercase){
+  if (lowercase) {
     characterTypesArr.push('lowercase');
     console.log('lowercase criteria added');
   }
-  if (uppercase){
+  if (uppercase) {
     characterTypesArr.push('uppercase');
     console.log('uppercase criteria added');
   }
-  if (numeric){
+  if (numeric) {
     characterTypesArr.push('numeric');
     console.log('numeric criteria added');
   }
-  if (specialCharacters){
+  if (specialCharacters) {
     characterTypesArr.push('specialCharacter');
     console.log('special characters criteria added');
   }
@@ -86,49 +86,45 @@ const getCharacterTypes = () => {
 }
 
 
-
 //function to prompt user for password length between 8-128
 const getPasswordLength = () => {
-  let passwordLength = prompt('Choose password length between 8 and 128 characters.');
-  passwordLength = parseInt(passwordLength);
-  if (!passwordLength) {
-    alert('Length must be a number');
-    getPasswordLength();
-  } else if (passwordLength < 8 || passwordLength > 128) {
-    alert('Password must be between 8 and 128 characters.');
-    getPasswordLength();
+  debugger;
+  while (!passwordLength || passwordLength < 8 || passwordLength > 128) {
+    var passwordLength = prompt('Choose password length between 8 and 128 characters.');
   }
+  passwordLength = parseInt(passwordLength);
   console.log(`Length: ${passwordLength}`);
   return passwordLength;
+
 }
 
 const getCharacter = (type) => {
-    switch(type){
-      case 'lowercase':
-        return getLowerCase();
-        break;
-        case 'uppercase':
-          return getUpperCase();
-          break;
-          case 'numeric':
-            return getNumeric();
-            break;
-            case 'specialCharacter':
-              return getSpecialCharacter();
-              break;
-              default:
-                alert('Error - generate password loop');
-    }
+  switch (type) {
+    case 'lowercase':
+      return getLowerCase();
+      break;
+    case 'uppercase':
+      return getUpperCase();
+      break;
+    case 'numeric':
+      return getNumeric();
+      break;
+    case 'specialCharacter':
+      return getSpecialCharacter();
+      break;
+    default:
+      alert('Error - generate password loop');
+  }
 }
 
 //fill out rest of password 
-const getPassword = (types,length) => {
+const getPassword = (types, length) => {
   let password = [];
-  for (i=0; i<types.length;i++){
+  for (i = 0; i < types.length; i++) {
     password.push(getCharacter(types[i]));
   }
-  let remainingLength = length-password.length;
-  for (i=0; i<remainingLength;i++){
+  let remainingLength = length - password.length;
+  for (i = 0; i < remainingLength; i++) {
     password.push(getCharacter(randomCharacterTypes(types)));
   }
   return password.join('');
@@ -140,7 +136,7 @@ const getPassword = (types,length) => {
 const generatePassword = () => {
   let length = getPasswordLength();
   let characterTypes = getCharacterTypes();
-  let password = getPassword(characterTypes,length);
+  let password = getPassword(characterTypes, length);
   return password;
 
 }
