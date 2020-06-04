@@ -43,12 +43,18 @@ var getSpecialCharacter = () => {
   return specialCharacters[index];
 };
 
+//randomly chooses a character type from array of types chosen by user
+const randomCharacterTypes = (characterArr) => {
+  let index = Math.floor(Math.random(0*characterArr.length));
+  return characterArr[index];
+}
 
 
 
-//prompt user for character types selection. Must choose at least one
+
+//prompt user for character types selection. Must choose at least one. Returns array of character types chosen
 const getCharacterTypes = () => {
-  alert('Select which character types to inlcude. Must select at least one');
+  alert('Select which character types to include. Must select at least one');
   var lowercase = window.confirm('Include lowercase?');
   var uppercase = window.confirm('Include uppercase?');
   var numeric = window.confirm('Include numeric?');
@@ -59,6 +65,24 @@ const getCharacterTypes = () => {
     alert('Must select at least one character type.')
     getCharacterTypes();
   }
+  var characterTypesArr = [];
+  if (lowercase){
+    characterTypesArr.push('lowercase');
+    console.log('lowercase criteria added');
+  }
+  if (uppercase){
+    characterTypesArr.push('uppercase');
+    console.log('uppercase criteria added');
+  }
+  if (numeric){
+    characterTypesArr.push('numeric');
+    console.log('numeric criteria added');
+  }
+  if (specialCharacters){
+    characterTypesArr.push('specialCharacters');
+    console.log('special characters criteria added');
+  }
+  return characterTypesArr;
 }
 
 
@@ -74,6 +98,7 @@ const getPasswordLength = () => {
     alert('Password must be between 8 and 128 characters.');
     getPasswordLength();
   }
+  console.log(`Length: ${passwordLength}`);
   return passwordLength;
 }
 
@@ -85,7 +110,7 @@ const generatePassword = () => {
   //get password length
   let length = getPasswordLength();
   //get character types
-  let charTypes = getCharacterTypes();
+  let characterTypes = getCharacterTypes();
 
 }
 
